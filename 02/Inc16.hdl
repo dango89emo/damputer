@@ -11,5 +11,9 @@ CHIP Inc16 {
     OUT out[16];
 
     PARTS:
-    //// Replace this comment with your code.
+    Not16(in=in, out=tmp);
+    Add16(a=in, b=tmp, out=minusone);
+    Add16(a=minusone, b=minusone, out=minustwo);
+    Not16(in=minustwo, out=one);
+    Add16(a=in,b=one, out=out);
 }
