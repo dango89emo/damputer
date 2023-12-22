@@ -1,0 +1,15 @@
+CHIP Switcher {
+    IN inc, load, reset;
+    OUT out[2];
+
+    PARTS:
+    // if inc out = 00
+    // if load out = 01
+    // if reset = 10
+    // if else out = 11
+    Or(a=inc, b=reset, out=not);
+    Not(in=not, out=out[0]);
+    Or(a=reset, b=none,out=out[1]);
+    Or(a=not, b=reset, out=atleast);
+    Not(in=atleast, out=none);
+}
